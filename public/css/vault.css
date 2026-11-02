@@ -1,0 +1,442 @@
+/* ==========================================================================
+   The Vault: steel, brass and banknote engraving, on the Clever night blue.
+   One bold element (the door). Everything around it stays engraved and quiet.
+   ========================================================================== */
+
+:root {
+  --steel-0: #f1f3f5;
+  --steel-1: #c9ced3;
+  --steel-2: #9aa1a9;
+  --steel-3: #6b737c;
+  --steel-4: #3b4149;
+  --steel-5: #22262d;
+  --brass-0: #fbe7a6;
+  --brass-1: #e2c06a;
+  --brass-2: #c39a45;
+  --brass-3: #8c6a26;
+  --brass-4: #5a4216;
+  --ivory: #f4ecda;
+  --alarm: #ff5a5a;
+  --tunnel: #11bea9;
+  --display: "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+  --plate-bg: linear-gradient(180deg, #1f2431 0%, #181c27 100%);
+  --hairlines: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 3px);
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mono { font-family: var(--cc-mono); }
+[hidden] { display: none !important; }
+
+/* ---------- Section heads ---------- */
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 20px; margin-bottom: 22px; }
+.section-title { font-family: var(--display); font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.05; letter-spacing: -0.01em; color: var(--ivory); font-variation-settings: "opsz" 72; }
+.section-sub { color: var(--cc-muted); font-size: 15px; max-width: 62ch; }
+
+/* ==========================================================================
+   Hero: the lobby and the door
+   ========================================================================== */
+.hero { padding: clamp(36px, 6vw, 72px) 0 clamp(28px, 4vw, 48px); overflow-x: clip; } /* the engraved halo may not widen the page */
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 540px);
+  grid-template-areas: "title door" "lead door" "actions door" "plaque door";
+  grid-template-rows: auto auto auto 1fr;
+  column-gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+.hero__copy { display: contents; }
+.hero__title {
+  grid-area: title; align-self: end;
+  font-family: var(--display); font-weight: 600; font-variation-settings: "opsz" 96;
+  font-size: clamp(46px, 6.6vw, 84px); line-height: 0.98; letter-spacing: -0.02em;
+  color: var(--ivory); max-width: 11ch; margin-top: clamp(8px, 3vw, 40px);
+}
+.hero__lead { grid-area: lead; margin-top: 24px; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; color: var(--cc-text-2); max-width: 46ch; }
+.hero__lead strong { color: var(--cc-text); }
+.hero__actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hero__door { grid-area: door; display: grid; place-items: center; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 0 22px; border-radius: 12px; border: 1px solid transparent;
+  font: 700 15px/1 var(--cc-font); letter-spacing: 0.005em; cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { cursor: progress; filter: saturate(0.4) brightness(0.8); transform: none; }
+.btn--brass {
+  color: #2a1d05;
+  background: linear-gradient(180deg, var(--brass-0) 0%, var(--brass-1) 38%, var(--brass-2) 70%, var(--brass-3) 100%);
+  border-color: #6e5118;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -2px 0 rgba(0, 0, 0, 0.18), 0 10px 24px rgba(195, 154, 69, 0.28);
+}
+.btn--brass:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -2px 0 rgba(0, 0, 0, 0.18), 0 14px 32px rgba(226, 192, 106, 0.4); }
+.btn--steel {
+  color: #161a20;
+  background: linear-gradient(180deg, var(--steel-0) 0%, var(--steel-1) 40%, var(--steel-2) 75%, var(--steel-3) 100%);
+  border-color: #4b525b;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -2px 0 rgba(0, 0, 0, 0.2), 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+.btn--ghost { color: var(--cc-text-2); border-color: var(--cc-border-strong); background: transparent; }
+.btn--ghost:hover { color: var(--cc-text); border-color: var(--brass-2); }
+
+/* ---------- The result plaque (engraved steel, brass lettering) ---------- */
+.plaque {
+  grid-area: plaque; position: relative; margin-top: 26px; padding: 18px 22px 18px 24px; max-width: 52ch;
+  background: var(--hairlines), var(--plate-bg);
+  border: 1px solid rgba(201, 162, 77, 0.32); border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 18px 40px rgba(5, 7, 20, 0.35);
+}
+.plaque::before {
+  content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 0 3px 3px 0; background: var(--brass-2);
+  transition: background 0.3s ease;
+}
+.plaque__title { font-family: var(--display); font-weight: 600; font-size: 28px; line-height: 1.1; color: var(--brass-1); font-variation-settings: "opsz" 48; }
+.plaque__text { margin-top: 6px; color: var(--cc-text-2); font-size: 15px; line-height: 1.55; overflow-wrap: anywhere; }
+.plaque__list { list-style: none; margin-top: 10px; display: grid; gap: 8px; }
+.plaque__list li { position: relative; padding-left: 20px; font-size: 14px; line-height: 1.5; color: var(--cc-text-2); overflow-wrap: anywhere; }
+.plaque__list li::before { content: "✕"; position: absolute; left: 0; top: 0; font-weight: 700; color: #ff8f8f; }
+.plaque__text code { font-family: var(--cc-mono); font-size: 13px; color: var(--ivory); }
+.plaque[data-tone="refused"]::before { background: var(--alarm); }
+.plaque[data-tone="refused"] .plaque__title { color: #ff8f8f; }
+.plaque[data-tone="open"]::before { background: var(--tunnel); }
+.plaque[data-tone="open"] .plaque__title { color: var(--brass-0); }
+
+/* ==========================================================================
+   The door
+   ========================================================================== */
+.vault { position: relative; width: min(100%, 540px); aspect-ratio: 1; perspective: 1500px; margin: 8px 0 34px; }
+.vault__rosette { position: absolute; left: -9%; top: -9%; width: 118%; height: 118%; max-width: none; pointer-events: none; opacity: 0.5; }
+.vault__rosette path { fill: none; stroke: var(--brass-2); stroke-width: 0.5; opacity: 0.22; }
+
+.vault__frame {
+  position: absolute; inset: 3%; border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 60%, rgba(0, 0, 0, 0.25) 66%, transparent 71%),
+    conic-gradient(from 210deg, #8d949c, #4a5058 10%, #b9bec4 22%, #555c65 36%, #a3a9b0 50%, #40464e 62%, #c2c7cc 76%, #5a616a 88%, #8d949c);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.35), inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+    0 40px 80px rgba(3, 5, 14, 0.7), 0 0 0 10px rgba(14, 17, 36, 0.9), 0 0 0 11px rgba(201, 162, 77, 0.25);
+}
+.vault__rivets { position: absolute; inset: 0; width: 100%; height: 100%; }
+.vault__opening {
+  position: absolute; inset: 7.5%; border-radius: 50%; background: #07080b;
+  box-shadow: inset 0 14px 30px rgba(0, 0, 0, 0.95), inset 0 -5px 12px rgba(255, 255, 255, 0.07), 0 0 0 3px rgba(0, 0, 0, 0.55), 0 -2px 0 4px rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+}
+.vault__room {
+  position: absolute; inset: 1.5%; border-radius: 50%; overflow: hidden;
+  background: radial-gradient(circle at 50% 78%, #ffe08a 0%, #c98f2c 16%, #4a3210 42%, #0d0b08 72%);
+  box-shadow: inset 0 0 70px 26px rgba(0, 0, 0, 0.88);
+  filter: brightness(0.35);
+  transition: filter 1.4s ease 0.6s;
+}
+.vault__gold { position: absolute; left: 12%; right: 12%; bottom: 4%; width: 76%; height: auto; }
+.vault[data-state="open"] .vault__room { filter: brightness(1.05); }
+
+.door {
+  position: absolute; inset: 2.6%; border-radius: 50%;
+  transform-style: preserve-3d; transform-origin: -3% 50%;
+  transition: transform 1.8s cubic-bezier(0.55, 0, 0.18, 1);
+}
+.vault[data-state="open"] .door { transform: rotateY(-76deg); }
+
+.door__face {
+  position: absolute; inset: 0; border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.10) 0 28%, transparent 29%),
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.35), transparent 46%),
+    conic-gradient(from 195deg, #d9dde1, #8a919a 7%, #c6cbd0 16%, #6b737c 29%, #bcc2c8 41%, #e9ecef 50%, #7b838c 61%, #c1c6cc 72%, #626a73 85%, #cfd3d8 94%, #d9dde1);
+  box-shadow: inset 0 -16px 36px rgba(0, 0, 0, 0.42), inset 0 14px 26px rgba(255, 255, 255, 0.22), 0 26px 50px rgba(0, 0, 0, 0.55);
+}
+.door__art { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* Thickness: stacked discs behind the face, visible when the door swings */
+.door__depth span { position: absolute; inset: 0; border-radius: 50%; background: linear-gradient(90deg, #2b3037, #6b737c 40%, #3b4149); }
+.door__depth span:nth-child(1) { transform: translateZ(-3px); }
+.door__depth span:nth-child(2) { transform: translateZ(-6px); }
+.door__depth span:nth-child(3) { transform: translateZ(-9px); }
+.door__depth span:nth-child(4) { transform: translateZ(-12px); }
+.door__depth span:nth-child(5) { transform: translateZ(-15px); }
+.door__depth span:nth-child(6) { transform: translateZ(-18px); }
+.door__depth span:nth-child(7) { transform: translateZ(-21px); }
+.door__depth span:nth-child(8) { transform: translateZ(-24px); background: #1b1e23; }
+
+/* Bolts: they leave the door's edge and lock into the frame */
+.door__bolts { position: absolute; inset: 0; transform: translateZ(-12px); }
+.bolt { position: absolute; left: 50%; top: 48.3%; width: 55%; height: 3.4%; transform-origin: 0 50%; transform: rotate(var(--a)); }
+.bolt::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 17%; border-radius: 2px 999px 999px 2px;
+  background: linear-gradient(180deg, #f6f7f9 0%, #b8bec5 30%, #737b84 70%, #3a4047 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  transition: transform 0.55s cubic-bezier(0.6, 0, 0.3, 1);
+}
+.vault:is([data-state="unlocking"], [data-state="open"]) .bolt::after { transform: translateX(-62%); }
+
+/* Handle and dial (SVG groups, rotated about the door's centre) */
+.door__handle, .door__dial { transform-box: view-box; transform-origin: 200px 200px; }
+.door__handle { transform: rotate(45deg); transition: transform 0.8s cubic-bezier(0.5, 0, 0.2, 1.15); }
+.vault:is([data-state="unlocking"], [data-state="open"]) .door__handle { transform: rotate(135deg); }
+.guilloche path { fill: none; stroke: #232930; stroke-width: 0.32; opacity: 0.5; }
+.guilloche--dial path { stroke: var(--brass-1); stroke-width: 0.25; opacity: 0.55; }
+#dialTicks line { stroke: var(--steel-1); }
+#dialTicks text { fill: var(--ivory); font: 600 9px var(--display); text-anchor: middle; dominant-baseline: central; }
+#doorRivets circle, #frameRivets circle { fill: url(#brass); }
+
+.vault__hinges span {
+  position: absolute; left: -3.2%; width: 7%; height: 15%; border-radius: 6px;
+  background: linear-gradient(90deg, #3b4149, #c9ced3 35%, #f1f3f5 48%, #8d949c 70%, #2c3138);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+.vault__hinges span:nth-child(1) { top: 20%; }
+.vault__hinges span:nth-child(2) { bottom: 20%; }
+.vault__hinges span::before, .vault__hinges span::after { content: ""; position: absolute; left: 12%; right: 12%; height: 2px; background: rgba(0, 0, 0, 0.35); }
+.vault__hinges span::before { top: 30%; }
+.vault__hinges span::after { bottom: 30%; }
+
+.vault__lamp {
+  position: absolute; right: 9%; top: 6%; width: 7.5%; aspect-ratio: 1; border-radius: 50%; z-index: 2;
+  background: radial-gradient(circle at 35% 30%, #ffc2c2 0%, #d62a35 45%, #5c0a10 100%);
+  box-shadow: 0 0 0 3px #2a2f37, 0 0 0 5px rgba(201, 162, 77, 0.6), 0 6px 12px rgba(0, 0, 0, 0.6);
+  filter: brightness(0.45) saturate(0.7);
+}
+.vault.is-alarm .vault__lamp { animation: alarm 0.42s steps(2, jump-none) 6; }
+@keyframes alarm {
+  from { filter: brightness(0.45) saturate(0.7); box-shadow: 0 0 0 3px #2a2f37, 0 0 0 5px rgba(201, 162, 77, 0.6), 0 6px 12px rgba(0, 0, 0, 0.6); }
+  to { filter: brightness(1.25) saturate(1.2); box-shadow: 0 0 0 3px #2a2f37, 0 0 0 5px rgba(201, 162, 77, 0.6), 0 0 34px 14px rgba(255, 70, 70, 0.75); }
+}
+.vault.is-shaking .vault__frame { animation: shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
+@keyframes shake {
+  10%, 90% { transform: translateX(-2px); }
+  20%, 80% { transform: translateX(4px); }
+  30%, 50%, 70% { transform: translateX(-7px) rotate(-0.4deg); }
+  40%, 60% { transform: translateX(7px) rotate(0.4deg); }
+}
+
+.vault__maker {
+  position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%); white-space: nowrap;
+  padding: 5px 16px; border-radius: 4px; font: italic 500 13px/1.2 var(--display); color: #2a1d05;
+  background: linear-gradient(180deg, var(--brass-0), var(--brass-2) 60%, var(--brass-3));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================================
+   Two roads
+   ========================================================================== */
+.roads { padding: clamp(28px, 4vw, 48px) 0; }
+.roads__map {
+  display: grid; grid-template-columns: minmax(0, 1fr) 132px; grid-template-rows: auto auto;
+  column-gap: 0; row-gap: 18px; padding: clamp(18px, 3vw, 28px);
+  background: var(--hairlines), var(--plate-bg); border: 1px solid var(--cc-border); border-radius: 10px;
+}
+.road {
+  grid-column: 1; display: grid; grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
+  grid-template-areas: "origin track" ". addr" ". result"; column-gap: 20px; align-items: center;
+}
+.road__origin { grid-area: origin; }
+.road__name { font-family: var(--display); font-weight: 600; font-size: 22px; color: var(--ivory); line-height: 1.1; }
+.road__who { font-size: 13px; color: var(--cc-muted); line-height: 1.4; margin-top: 3px; }
+.road__track { grid-area: track; position: relative; height: 56px; }
+.road__addr { grid-area: addr; font-size: 12.5px; color: var(--cc-text-2); overflow-wrap: anywhere; margin-top: 2px; }
+.road__result { grid-area: result; font-size: 14px; color: var(--cc-muted); margin-top: 4px; min-height: 1.5em; }
+.road[data-state="refused"] .road__result { color: #ff9a9a; }
+.road[data-state="open"] .road__result { color: #6fe6d6; }
+
+/* The street: a dashed road that ends at a bricked-up door */
+.road__line { position: absolute; left: 0; right: 0; top: 50%; border-top: 2px dashed var(--steel-3); }
+.road__line::after { content: ""; position: absolute; left: 76%; right: 0; top: -2px; border-top: 2px dotted rgba(157, 157, 187, 0.25); }
+.road__wall {
+  position: absolute; left: 72%; top: 50%; width: 38px; height: 48px; transform: translate(-50%, -50%);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 2px; border-radius: 3px; background: #2b1a14;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), 0 6px 14px rgba(0, 0, 0, 0.5); transition: box-shadow 0.25s ease;
+}
+.road__wall span { border-radius: 1.5px; background: linear-gradient(180deg, #a5543d, #7a3624); }
+.road__wall span:nth-child(3), .road__wall span:nth-child(4) { transform: translateX(5px); }
+.road[data-state="refused"] .road__wall { box-shadow: 0 0 0 2px var(--alarm), 0 0 24px rgba(255, 90, 90, 0.55); }
+.road__runner {
+  position: absolute; left: 0; top: 50%; width: 16px; height: 16px; margin-top: -8px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, var(--steel-2) 60%, var(--steel-4));
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* The tunnel: a pneumatic tube with brass collars and a capsule */
+.road__tube {
+  position: absolute; left: 0; right: 0; top: 50%; height: 26px; margin-top: -13px; border-radius: 999px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 calc(20% - 6px), rgba(195, 154, 69, 0.85) calc(20% - 6px) 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(17, 190, 169, 0.06) 45%, rgba(0, 0, 0, 0.35));
+  border: 2px solid var(--brass-3);
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.12), inset 0 -4px 8px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.road[data-state="busy"] .road__tube, .road[data-state="open"] .road__tube {
+  border-color: var(--brass-1);
+  box-shadow: inset 0 3px 6px rgba(255, 255, 255, 0.12), inset 0 0 14px rgba(17, 190, 169, 0.55), 0 0 22px rgba(17, 190, 169, 0.28);
+}
+.road__capsule {
+  position: absolute; left: 4px; top: 50%; width: 46px; height: 14px; margin-top: -7px; border-radius: 999px;
+  background: linear-gradient(180deg, var(--brass-0), var(--brass-2) 55%, var(--brass-4));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.roads__vault {
+  grid-column: 2; grid-row: 1 / span 2; align-self: stretch; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  margin-left: -2px; border-radius: 10px; padding: 14px 10px; text-align: center;
+  background: linear-gradient(180deg, #3b4149, #22262d); border: 1px solid #4b525b; color: var(--brass-1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.roads__vault svg { width: 56px; height: 56px; }
+.roads__vault p { font-family: var(--display); font-weight: 600; font-size: 16px; color: var(--ivory); line-height: 1.15; }
+
+/* ==========================================================================
+   The strong room
+   ========================================================================== */
+.strongroom { padding: clamp(28px, 4vw, 48px) 0; }
+.strongroom__total { margin-left: auto; font-family: var(--display); font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); color: var(--brass-1); font-variant-numeric: lining-nums tabular-nums; }
+.drawers { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 232px), 1fr)); gap: 10px; }
+.drawer {
+  position: relative; min-height: 128px; padding: 14px 16px 14px; border-radius: 5px; overflow: hidden;
+  background: var(--hairlines), linear-gradient(180deg, #4a5058 0%, #353a42 55%, #2a2e35 100%);
+  border: 1px solid #555c65; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+  color: var(--cc-text-2);
+}
+.drawer__no {
+  display: inline-block; padding: 2px 9px; border-radius: 3px; font: 600 13px/1.4 var(--display); color: #2a1d05; font-variant-numeric: lining-nums;
+  background: linear-gradient(180deg, var(--brass-0), var(--brass-2) 70%, var(--brass-3)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+.drawer__keyhole { position: absolute; right: 16px; top: 16px; width: 12px; height: 18px; }
+.drawer__keyhole::before { content: ""; position: absolute; left: 1px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: #121418; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15); }
+.drawer__keyhole::after { content: ""; position: absolute; left: 4px; top: 7px; width: 4px; height: 11px; background: #121418; border-radius: 0 0 2px 2px; }
+.drawer__sealed { margin-top: 26px; font-size: 13px; color: var(--steel-2); }
+.drawer__icon { position: absolute; right: 14px; top: 12px; width: 30px; height: 30px; color: var(--brass-1); }
+.drawer__name { margin-top: 12px; font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--ivory); padding-right: 30px; }
+.drawer__detail { font-size: 13px; color: var(--cc-text-2); margin-top: 3px; }
+.drawer__meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 10px; font-family: var(--cc-mono); font-size: 12px; color: var(--steel-1); }
+.drawer__meta b { color: var(--brass-0); font-weight: 500; }
+.drawer__from { margin-top: 6px; font-size: 12px; color: #6fe6d6; overflow-wrap: anywhere; }
+.drawer.is-open {
+  background: var(--hairlines), radial-gradient(120% 90% at 50% 0%, rgba(226, 192, 106, 0.16), transparent 60%), linear-gradient(180deg, #2b2a26 0%, #1d1c19 100%);
+  border-color: rgba(201, 162, 77, 0.45);
+}
+.drawer.is-open.is-sliding { animation: slide-out 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 45ms); }
+@keyframes slide-out { from { transform: translateY(8px) scale(0.98); filter: brightness(0.5); } to { transform: none; filter: none; } }
+.drawer.is-yours { border-color: var(--tunnel); box-shadow: 0 0 0 1px var(--tunnel), 0 0 28px rgba(17, 190, 169, 0.25); }
+
+.deposit { margin-top: 22px; padding: 18px 20px; border-radius: 10px; border: 1px dashed rgba(201, 162, 77, 0.4); background: rgba(28, 32, 69, 0.35); }
+.deposit__lead { color: var(--cc-text-2); font-size: 15px; max-width: 70ch; }
+.deposit__choices { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 16px; border-radius: 10px; cursor: pointer;
+  font: 600 14px var(--cc-font); color: var(--ivory); background: linear-gradient(180deg, #2a2f39, #20242d);
+  border: 1px solid rgba(201, 162, 77, 0.5); transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.chip svg { width: 20px; height: 20px; color: var(--brass-1); }
+.chip:hover { border-color: var(--brass-1); transform: translateY(-1px); }
+.chip[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+.deposit__note { margin-top: 12px; font-size: 14px; color: var(--cc-text-2); min-height: 1.5em; overflow-wrap: anywhere; }
+.deposit__note code { font-family: var(--cc-mono); font-size: 12.5px; color: var(--ivory); }
+
+/* ==========================================================================
+   What the Network Group does here: two engineering plates
+   ========================================================================== */
+.ng { padding: clamp(28px, 4vw, 48px) 0 8px; }
+.ng__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.plate {
+  position: relative; padding: clamp(20px, 3vw, 30px); border-radius: 8px;
+  background:
+    radial-gradient(circle at 14px 14px, var(--brass-1) 0 2.5px, var(--brass-4) 3px 4px, transparent 4.5px),
+    radial-gradient(circle at calc(100% - 14px) 14px, var(--brass-1) 0 2.5px, var(--brass-4) 3px 4px, transparent 4.5px),
+    radial-gradient(circle at 14px calc(100% - 14px), var(--brass-1) 0 2.5px, var(--brass-4) 3px 4px, transparent 4.5px),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), var(--brass-1) 0 2.5px, var(--brass-4) 3px 4px, transparent 4.5px),
+    var(--hairlines), var(--plate-bg);
+  border: 1px solid rgba(201, 162, 77, 0.28);
+}
+.plate__title { font-family: var(--display); font-weight: 600; font-size: 19px; color: var(--brass-1); margin: 22px 0 10px; font-variation-settings: "opsz" 36; }
+.plate__title:first-child { margin-top: 0; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 10px 20px; }
+.facts dt { font-size: 13px; color: var(--cc-muted); }
+.facts dd { font-size: 14px; color: var(--ivory); overflow-wrap: anywhere; margin-top: 2px; }
+.members { list-style: none; display: grid; gap: 10px; }
+.member { padding: 12px 14px; border-radius: 6px; background: rgba(7, 8, 11, 0.35); border: 1px solid var(--cc-border); }
+.member__head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.member__name { font-family: var(--display); font-weight: 600; font-size: 17px; color: var(--ivory); }
+.member__tag { font-size: 12px; color: var(--cc-muted); }
+.member__line { margin-top: 4px; font-family: var(--cc-mono); font-size: 12.5px; color: var(--cc-text-2); overflow-wrap: anywhere; }
+.member__line span { color: var(--cc-muted); }
+.hostname { font-size: 13px; color: var(--ivory); overflow-wrap: anywhere; padding: 10px 12px; border-radius: 6px; background: var(--cc-bg-deep); border: 1px solid var(--cc-border); }
+.hostname span { color: var(--cc-muted); }
+.note { margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--cc-text-2); padding-left: 14px; border-left: 2px solid rgba(17, 190, 169, 0.6); }
+
+.path { list-style: none; counter-reset: step; display: grid; gap: 8px; }
+.path li {
+  counter-increment: step; display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; grid-template-areas: "n step ms" "n detail detail";
+  column-gap: 10px; align-items: baseline; padding: 10px 12px; border-radius: 6px; background: rgba(7, 8, 11, 0.35); border: 1px solid var(--cc-border);
+}
+.path li::before {
+  content: counter(step); grid-area: n; align-self: center; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  font: 600 14px var(--display); color: #2a1d05; background: linear-gradient(180deg, var(--brass-0), var(--brass-2));
+}
+.path__step { grid-area: step; font-size: 14px; color: var(--cc-text); }
+.path__ms { grid-area: ms; font-size: 14px; color: var(--brass-0); white-space: nowrap; }
+.path__detail { grid-area: detail; font-size: 12px; color: var(--cc-muted); overflow-wrap: anywhere; margin-top: 2px; }
+.ledger { font-size: 14px; color: var(--cc-text-2); line-height: 1.6; }
+.ledger b { color: var(--ivory); font-weight: 600; }
+
+.logbook { list-style: none; display: grid; gap: 4px; font-size: 12px; max-height: 300px; overflow-y: auto; padding-right: 4px; }
+.logbook li { display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 8px; align-items: baseline; padding: 6px 8px; border-radius: 4px; background: rgba(7, 8, 11, 0.35); color: var(--cc-text-2); }
+.logbook li span:last-child { overflow-wrap: anywhere; }
+.logbook__time { color: var(--cc-muted); }
+.logbook__mark { font-weight: 600; }
+.logbook li.is-ok .logbook__mark { color: #5fe3d3; }
+.logbook li.is-ko .logbook__mark { color: #ff8f8f; }
+.logbook__empty { display: block !important; color: var(--cc-muted); }
+
+.wiring { margin-top: 18px; }
+.wiring summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--cc-text-2); }
+.wiring summary:hover { color: var(--brass-1); }
+.wiring .cc-code { margin-top: 10px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+
+.platform { padding-top: 28px; }
+
+/* Footer academy badge */
+.academy { display: flex; gap: 16px; align-items: center; }
+.academy__badge { width: 96px; height: 96px; flex: none; filter: drop-shadow(0 10px 18px rgba(165, 16, 80, 0.35)); }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1000px) { .stack-pill { display: none; } }
+@media (max-width: 900px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); grid-template-areas: "title" "lead" "actions" "door" "plaque"; grid-template-rows: none; }
+  .hero__title { max-width: 14ch; margin-top: 0; }
+  .hero__door { margin-top: 18px; }
+  .plaque { margin-top: 8px; }
+  .vault { width: min(100%, 460px); }
+  .ng__grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .roads__map { grid-template-columns: minmax(0, 1fr) 76px; padding: 16px; }
+  .road { grid-template-columns: minmax(0, 1fr); grid-template-areas: "origin" "track" "addr" "result"; }
+  .road__track { height: 48px; margin-right: 6px; }
+  .roads__vault svg { width: 40px; height: 40px; }
+  .roads__vault p { font-size: 14px; }
+  .btn { flex: 1 1 100%; }
+  .strongroom__total { margin-left: 0; width: 100%; }
+  .drawers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .drawer { min-height: 0; padding: 10px 10px 12px; }
+  .drawer__icon { width: 22px; height: 22px; right: 8px; top: 9px; }
+  .drawer__keyhole { right: 10px; top: 11px; }
+  .drawer__name { font-size: 16px; padding-right: 0; margin-top: 8px; }
+  .drawer__detail { font-size: 12px; }
+  .drawer__meta { flex-direction: column; gap: 2px; font-size: 11px; }
+  .drawer__sealed { margin-top: 14px; }
+  .drawer__from { font-size: 11px; }
+  .academy__badge { width: 76px; height: 76px; }
+  .vault__maker { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .door, .bolt::after, .door__handle, .vault__room { transition: none !important; }
+}

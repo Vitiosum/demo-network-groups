@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Clever Brand Kit: <head> snippet -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#13172e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/cc-brand.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 101 116'%3E%3Cpolygon fill='%23AB2B4A' points='100.423 29.134 100.423 86.868 89.721 73.062 83.76 58.003 83.756 58.003 89.418 42.731'/%3E%3Cpolygon fill='%23E87A68' points='.429 29.134 .429 86.868 9.889 73.481 17.092 58.003 17.096 58.003 9.773 43.319'/%3E%3Cpolygon fill='%23D74D4E' points='83.756 58.003 52.241 60.003 17.092 58.003 31.76 29.134 50.426 .269 70.722 31.961'/%3E%3Cpolygon fill='%23BD3246' points='100.423 29.134 83.756 58.003 50.426 .269'/%3E%3Cpolygon fill='%23F19175' points='50.426 .269 17.092 58.003 .425 29.134'/%3E%3Cpolygon fill='%23CF3942' points='83.756 58.003 72.365 82.931 50.426 115.737 27.849 81.83 17.092 58.003'/%3E%3Cpolygon fill='%23E0625B' points='50.426 115.737 .425 86.868 17.092 58.003'/%3E%3Cpolygon fill='%239A244F' points='50.422 115.737 100.423 86.868 83.756 58.003'/%3E%3C/svg%3E">
+<!-- The Vault universe -->
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/vault.css">
+<title>The Vault: Network Groups on Clever Cloud</title>
+<meta name="description" content="Two apps and a Network Group: the vault is reachable only through a private WireGuard tunnel.">
+<script type="module" src="/js/app.js"></script>
+</head>
+<body>
+
+<header class="cc-topbar">
+  <div class="cc-container cc-topbar__inner">
+    <a href="https://www.clever.cloud" target="_blank" rel="noopener" aria-label="Clever Cloud">
+<svg class="cc-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 116" role="img" aria-label="Clever Cloud">
+  <g fill="none">
+        <g fill="currentColor" transform="translate(129 35)">
+      <path d="M15.241,18.87 C10.52,18.87 7.335,22.47 7.335,27.013 C7.335,31.556 10.58,35.215 15.183,35.215 C18.074,35.215 20.375,34.212 22.145,32.442 L25.804,37.753 C23.562,40.232 19.49,42.002 15.005,42.002 C6.627,42.002 0.136,35.275 0.136,27.073 C0.136,18.812 6.627,12.086 14.888,12.086 C19.726,12.086 23.562,13.738 26.039,16.335 L21.909,21.468 C20.139,19.755 18.015,18.87 15.241,18.87 Z"/>
+      <polygon points="31.229 .578 38.428 .578 38.428 41.174 31.229 41.174"/>
+      <path d="M44.976,27.072 C44.976,18.811 51.112,12.085 59.255,12.085 C67.339,12.085 73.475,18.339 73.475,26.482 C73.475,27.367 73.416,28.37 73.298,28.842 L52.351,28.842 C53.059,32.795 56.069,35.628 60.435,35.628 C63.267,35.628 65.687,34.389 67.339,32.678 L71.056,37.575 C68.932,40.053 64.919,42 60.14,42 C51.348,42 44.976,35.274 44.976,27.072 Z M52.469,24.299 L66.1,24.299 C65.274,20.286 62.737,18.221 59.373,18.221 C55.773,18.221 53.295,20.699 52.469,24.299 Z"/>
+      <polygon points="104.864 12.911 94.656 41.175 85.333 41.175 75.065 12.911 82.972 12.911 90.17 34.743 97.487 12.911"/>
+      <path d="M106.867 27.072C106.867 18.811 113.003 12.085 121.146 12.085 129.23 12.085 135.366 18.339 135.366 26.482 135.366 27.367 135.307 28.37 135.189 28.842L114.242 28.842C114.95 32.795 117.96 35.628 122.326 35.628 125.158 35.628 127.578 34.389 129.23 32.678L132.947 37.575C130.823 40.053 126.81 42 122.031 42 113.239 42 106.867 35.274 106.867 27.072zM114.36 24.299L127.991 24.299C127.165 20.286 124.628 18.221 121.264 18.221 117.665 18.221 115.187 20.699 114.36 24.299zM148.758 41.174L141.56 41.174 141.56 12.91 148.758 12.91 148.758 15.978C150.351 13.618 152.711 12.083 155.661 12.083 157.55 12.083 159.084 12.614 160.205 13.499L157.195 20.344C156.252 19.577 154.836 19.105 153.478 19.105 150.586 19.105 148.757 21.524 148.757 25.36L148.757 41.174 148.758 41.174zM191.415 18.87C186.694 18.87 183.508 22.47 183.508 27.013 183.508 31.556 186.753 35.215 191.356 35.215 194.248 35.215 196.548 34.212 198.319 32.442L201.977 37.753C199.735 40.232 195.664 42.002 191.179 42.002 182.8 42.002 176.31 35.275 176.31 27.073 176.31 18.812 182.8 12.086 191.061 12.086 195.9 12.086 199.735 13.738 202.213 16.335L198.082 21.468C196.312 19.755 194.188 18.87 191.415 18.87z"/>
+      <polygon points="207.402 .578 214.6 .578 214.6 41.174 207.402 41.174"/>
+      <path d="M221.148 27.072C221.148 18.811 227.639 12.085 235.84 12.085 244.042 12.085 250.592 18.812 250.592 27.072 250.592 35.274 244.042 42.001 235.84 42.001 227.64 42 221.148 35.274 221.148 27.072zM243.335 27.013C243.335 22.47 240.207 18.87 235.9 18.87 231.533 18.87 228.347 22.47 228.347 27.013 228.347 31.556 231.533 35.215 235.9 35.215 240.207 35.215 243.335 31.556 243.335 27.013zM263.924 28.193C263.924 32.323 266.343 35.097 269.943 35.097 273.542 35.097 275.962 32.324 275.962 28.193L275.962 12.911 283.16 12.911 283.16 28.724C283.16 36.631 277.909 41.882 269.943 41.882 261.977 41.882 256.725 36.631 256.725 28.724L256.725 12.911 263.924 12.911 263.924 28.193zM318.795.578L318.795 41.174 311.537 41.174 311.537 38.106C309.472 40.525 306.58 42.001 302.922 42.001 295.429 42.001 289.351 35.864 289.351 27.072 289.351 18.516 295.075 12.085 302.922 12.085 306.64 12.085 309.53 13.442 311.537 15.743L311.537.578 318.795.578zM311.537 27.013C311.537 22.47 308.409 18.87 304.102 18.87 299.735 18.87 296.549 22.47 296.549 27.013 296.549 31.556 299.735 35.215 304.102 35.215 308.409 35.215 311.537 31.556 311.537 27.013z"/>
+    </g>
+    <polygon fill="#AB2B4A" points="100.423 29.134 100.423 86.868 89.721 73.062 83.76 58.003 83.756 58.003 89.418 42.731"/><polygon fill="#E87A68" points=".429 29.134 .429 86.868 9.889 73.481 17.092 58.003 17.096 58.003 9.773 43.319"/><polygon fill="#D74D4E" points="83.756 58.003 52.241 60.003 17.092 58.003 31.76 29.134 50.426 .269 70.722 31.961"/><polygon fill="#BD3246" points="100.423 29.134 83.756 58.003 50.426 .269"/><polygon fill="#F19175" points="50.426 .269 17.092 58.003 .425 29.134"/><polygon fill="#CF3942" points="83.756 58.003 72.365 82.931 50.426 115.737 27.849 81.83 17.092 58.003"/><polygon fill="#E0625B" points="50.426 115.737 .425 86.868 17.092 58.003"/><polygon fill="#9A244F" points="50.422 115.737 100.423 86.868 83.756 58.003"/>
+  </g>
+</svg>
+    </a>
+    <span class="cc-topbar__sep"></span>
+    <div class="cc-topbar__demo"><small>Demo</small>Network Groups</div>
+    <span class="cc-topbar__spacer"></span>
+    <nav class="cc-topbar__nav" aria-label="Status">
+      <span class="cc-pill cc-pill--mono cc-hide-sm stack-pill">Bun, 2 apps, 1 Network Group</span>
+      <span class="cc-pill cc-pill--live"><span class="cc-dot"></span>Live on Clever Cloud</span>
+      <a class="cc-pill cc-pill--gradient" href="https://academy.clever.cloud/" target="_blank" rel="noopener">Get certified ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ The lobby: hero with the door ============ -->
+  <section class="hero">
+    <div class="cc-container hero__grid">
+      <div class="hero__copy">
+        <h1 class="hero__title">The vault has no front door.</h1>
+        <p class="hero__lead">You are standing in the lobby, a public app. The vault is a second app whose public address is bricked up. The only way in is a private WireGuard tunnel between the two apps: a <strong>Clever Cloud Network Group</strong>.</p>
+        <div class="hero__actions">
+          <button class="btn btn--steel" id="breakIn" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-crowbar"/></svg>Try to break in
+          </button>
+          <button class="btn btn--brass" id="tunnel" type="button">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-tube"/></svg>Go through the tunnel
+          </button>
+          <button class="btn btn--ghost" id="closeDoor" type="button" hidden>Close the door</button>
+        </div>
+        <div class="plaque" id="plaque" aria-live="polite">
+          <p class="plaque__title" id="plaqueTitle">Locked.</p>
+          <p class="plaque__text" id="plaqueText">Pick a way in. The lobby’s server makes each call, not your browser, so you see exactly what an app on the internet would get.</p>
+          <ul class="plaque__list" id="plaqueList" hidden></ul>
+        </div>
+      </div>
+
+      <div class="hero__door">
+        <div class="vault" id="vault" data-state="locked">
+          <svg class="vault__rosette" id="rosette" viewBox="0 0 600 600" aria-hidden="true"></svg>
+          <div class="vault__frame">
+            <svg class="vault__rivets" id="frameRivets" viewBox="0 0 400 400" aria-hidden="true"></svg>
+            <span class="vault__lamp" id="lamp" aria-hidden="true"></span>
+            <div class="vault__opening">
+              <div class="vault__room" aria-hidden="true">
+                <svg viewBox="0 0 200 200" class="vault__gold">
+                  <defs>
+                    <linearGradient id="barTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1b8"/><stop offset="1" stop-color="#e2b84f"/></linearGradient>
+                    <linearGradient id="barSide" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9a93c"/><stop offset="1" stop-color="#7d5716"/></linearGradient>
+                    <g id="bar"><path d="M0 14 L6 0 H34 L40 14 Z" fill="url(#barTop)"/><path d="M0 14 H40 V22 H0 Z" fill="url(#barSide)"/></g>
+                  </defs>
+                  <g transform="translate(40 120)"><use href="#bar"/><use href="#bar" x="42"/><use href="#bar" x="84"/><use href="#bar" x="21" y="-21"/><use href="#bar" x="63" y="-21"/><use href="#bar" x="42" y="-42"/></g>
+                  <g transform="translate(18 150)" opacity=".9"><use href="#bar"/><use href="#bar" x="42"/><use href="#bar" x="84"/><use href="#bar" x="126"/></g>
+                </svg>
+              </div>
+              <div class="door" id="door">
+                <div class="door__bolts" id="bolts"></div>
+                <div class="door__depth" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                <div class="door__face">
+                  <svg class="door__art" viewBox="0 0 400 400" role="img" aria-label="Round vault door with a combination dial">
+                    <defs>
+                      <radialGradient id="brass" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#fff0b5"/><stop offset=".35" stop-color="#e2c06a"/><stop offset=".75" stop-color="#9c7529"/><stop offset="1" stop-color="#5a4216"/></radialGradient>
+                      <linearGradient id="brassRing" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe7a6"/><stop offset=".5" stop-color="#b8903c"/><stop offset="1" stop-color="#5a4216"/></linearGradient>
+                      <radialGradient id="dialFace" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#2c313a"/><stop offset="1" stop-color="#14171c"/></radialGradient>
+                      <linearGradient id="ringHi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(255,255,255,.55)"/><stop offset="1" stop-color="rgba(0,0,0,.45)"/></linearGradient>
+                      <linearGradient id="ringLo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(0,0,0,.5)"/><stop offset="1" stop-color="rgba(255,255,255,.4)"/></linearGradient>
+                    </defs>
+                    <!-- bevels and grooves of the steel -->
+                    <circle cx="200" cy="200" r="196" fill="none" stroke="url(#ringHi)" stroke-width="3"/>
+                    <circle cx="200" cy="200" r="178" fill="none" stroke="url(#ringLo)" stroke-width="2.5"/>
+                    <circle cx="200" cy="200" r="172" fill="none" stroke="url(#ringHi)" stroke-width="1.5"/>
+                    <g id="doorRivets"></g>
+                    <!-- engraved plate -->
+                    <circle cx="200" cy="200" r="148" fill="rgba(20,24,30,.10)" stroke="url(#ringLo)" stroke-width="2"/>
+                    <g id="doorGuilloche" class="guilloche"></g>
+                    <!-- the handle: four spokes around the dial -->
+                    <g class="door__handle" id="handle">
+                      <g id="spoke"><rect x="194" y="70" width="12" height="80" rx="5" fill="url(#brassRing)" stroke="#5a4216" stroke-width="1"/><circle cx="200" cy="66" r="14" fill="url(#brass)" stroke="#5a4216" stroke-width="1.2"/><circle cx="196" cy="61" r="4" fill="rgba(255,255,255,.55)"/></g>
+                      <use href="#spoke" transform="rotate(90 200 200)"/>
+                      <use href="#spoke" transform="rotate(180 200 200)"/>
+                      <use href="#spoke" transform="rotate(270 200 200)"/>
+                    </g>
+                    <!-- the combination dial -->
+                    <circle cx="200" cy="200" r="64" fill="url(#brassRing)" stroke="#5a4216" stroke-width="1.5"/>
+                    <circle cx="200" cy="200" r="57" fill="#3a2c10" opacity=".35"/>
+                    <g class="door__dial" id="dial">
+                      <circle cx="200" cy="200" r="54" fill="url(#dialFace)"/>
+                      <g id="dialGuilloche" class="guilloche guilloche--dial"></g>
+                      <g id="dialTicks"></g>
+                      <circle cx="200" cy="200" r="15" fill="url(#brass)" stroke="#5a4216"/>
+                      <circle cx="200" cy="200" r="5" fill="#5a4216"/>
+                    </g>
+                    <path d="M200 131 l-6 -10 h12 z" fill="url(#brass)" stroke="#5a4216" stroke-width=".8"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="vault__hinges" aria-hidden="true"><span></span><span></span></div>
+            </div>
+          </div>
+          <p class="vault__maker" aria-hidden="true">Network Group Safe Works, Paris</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Two roads ============ -->
+  <section class="roads" aria-labelledby="roadsTitle">
+    <div class="cc-container">
+      <div class="section-head">
+        <h2 class="section-title" id="roadsTitle">Two roads to the vault</h2>
+        <p class="section-sub">Every attempt starts from the lobby’s server. Only the tunnel arrives.</p>
+      </div>
+      <div class="roads__map">
+        <div class="road road--street" id="roadStreet" data-state="idle">
+          <div class="road__origin">
+            <p class="road__name">The street</p>
+            <p class="road__who">the vault’s public address, as anyone on the internet sees it</p>
+          </div>
+          <div class="road__track" aria-hidden="true">
+            <span class="road__line"></span>
+            <span class="road__wall"><span></span><span></span><span></span><span></span><span></span><span></span></span>
+            <span class="road__runner" id="runner"></span>
+          </div>
+          <p class="road__addr mono" id="streetAddr">https://app-….cleverapps.io</p>
+          <p class="road__result" id="streetResult">Not tried yet.</p>
+        </div>
+
+        <div class="road road--tunnel" id="roadTunnel" data-state="idle">
+          <div class="road__origin">
+            <p class="road__name">The tunnel</p>
+            <p class="road__who">from the lobby, a member of the same Network Group</p>
+          </div>
+          <div class="road__track" aria-hidden="true">
+            <span class="road__tube"></span>
+            <span class="road__capsule" id="capsule"></span>
+          </div>
+          <p class="road__addr mono" id="tunnelAddr">http://app_….m.ng_….cc-ng.cloud:9000</p>
+          <p class="road__result" id="tunnelResult">Not tried yet.</p>
+        </div>
+
+        <div class="roads__vault" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><use href="#i-safe"/></svg>
+          <p>The vault app</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ The strong room ============ -->
+  <section class="strongroom" id="strongroom" data-state="sealed" aria-labelledby="strongTitle">
+    <div class="cc-container">
+      <div class="section-head">
+        <h2 class="section-title" id="strongTitle">The strong room</h2>
+        <p class="section-sub" id="strongSub">Sealed drawers. Go through the tunnel to read them.</p>
+        <p class="strongroom__total" id="total" aria-live="polite"></p>
+      </div>
+      <ol class="drawers" id="drawers"></ol>
+      <div class="deposit" id="deposit" hidden>
+        <p class="deposit__lead">Make a deposit. The lobby sends it through the tunnel, the vault files it in a new drawer and sends the whole inventory back.</p>
+        <div class="deposit__choices">
+          <button class="chip" type="button" data-kind="bar"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-bar"/></svg>Gold bar</button>
+          <button class="chip" type="button" data-kind="gem"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-gem"/></svg>Ruby</button>
+          <button class="chip" type="button" data-kind="coin"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-coin"/></svg>Gold sovereign</button>
+          <button class="chip" type="button" data-kind="pearls"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#i-pearls"/></svg>Pearl earrings</button>
+        </div>
+        <p class="deposit__note" id="depositNote" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ What the Network Group does here ============ -->
+  <section class="ng" aria-labelledby="ngTitle">
+    <div class="cc-container">
+      <div class="section-head">
+        <h2 class="section-title" id="ngTitle">What the Network Group does here</h2>
+        <p class="section-sub">Read live from both apps: their member names, their private addresses, every request the lobby sent.</p>
+      </div>
+      <div class="ng__grid">
+        <article class="plate">
+          <h3 class="plate__title">The group</h3>
+          <dl class="facts">
+            <div><dt>Network Group</dt><dd class="mono" id="ngId">…</dd></div>
+            <div><dt>Private network</dt><dd class="mono" id="ngCidr">…</dd></div>
+          </dl>
+          <h3 class="plate__title">Members</h3>
+          <ul class="members" id="members"></ul>
+          <h3 class="plate__title">Private hostname used by the lobby</h3>
+          <p class="hostname mono" id="hostname">…</p>
+          <p class="note">Traffic between members travels in WireGuard tunnels across Clever Cloud’s network: keys exchanged with Curve25519, packets sealed with ChaCha20-Poly1305. Clever generates the configuration when the group is created. The apps only see a private interface and a DNS name, and any port of a member is reachable inside the group.</p>
+        </article>
+
+        <article class="plate">
+          <h3 class="plate__title">Request path, last trip</h3>
+          <ol class="path" id="path">
+            <li><span class="path__step">Lobby resolves the vault’s member name</span><span class="path__ms mono" id="pathDns">–</span><span class="path__detail mono" id="pathDnsDetail">DNS</span></li>
+            <li><span class="path__step">Request and answer cross the WireGuard tunnel</span><span class="path__ms mono" id="pathTrip">–</span><span class="path__detail mono" id="pathTripDetail">HTTP over the Network Group</span></li>
+            <li><span class="path__step">Vault checks the caller is a peer, then answers</span><span class="path__ms mono" id="pathVault">–</span><span class="path__detail mono" id="pathVaultDetail">inside the vault app</span></li>
+          </ol>
+          <h3 class="plate__title">The vault’s door ledger</h3>
+          <p class="ledger" id="ledger">Opens after the first trip through the tunnel.</p>
+          <h3 class="plate__title">Guard’s logbook</h3>
+          <ol class="logbook mono" id="logbook"><li class="logbook__empty">No attempts yet on this instance.</li></ol>
+          <details class="wiring">
+            <summary>How the two apps are wired</summary>
+            <pre class="cc-code" id="wiring"></pre>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-container platform">
+    <div class="cc-platform">
+      <div class="cc-platform__head">
+        <h3>Running on Clever Cloud</h3>
+        <span class="cc-pill cc-pill--ok"><span class="cc-dot"></span>Lobby app</span>
+      </div>
+      <dl class="cc-kv" id="platformVars"></dl>
+      <div class="cc-platform__foot">Variables injected by the platform, see the <a href="https://www.clever.cloud/developers/doc/reference/reference-environment-variables/" target="_blank" rel="noopener">reference</a>. Nothing else is read for display.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="cc-footer">
+  <div class="cc-container">
+    <div class="cc-footer__inner">
+      <div class="cc-footer__brand">
+<svg class="cc-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 116" role="img" aria-label="Clever Cloud">
+  <g fill="none">
+        <g fill="currentColor" transform="translate(129 35)">
+      <path d="M15.241,18.87 C10.52,18.87 7.335,22.47 7.335,27.013 C7.335,31.556 10.58,35.215 15.183,35.215 C18.074,35.215 20.375,34.212 22.145,32.442 L25.804,37.753 C23.562,40.232 19.49,42.002 15.005,42.002 C6.627,42.002 0.136,35.275 0.136,27.073 C0.136,18.812 6.627,12.086 14.888,12.086 C19.726,12.086 23.562,13.738 26.039,16.335 L21.909,21.468 C20.139,19.755 18.015,18.87 15.241,18.87 Z"/>
+      <polygon points="31.229 .578 38.428 .578 38.428 41.174 31.229 41.174"/>
+      <path d="M44.976,27.072 C44.976,18.811 51.112,12.085 59.255,12.085 C67.339,12.085 73.475,18.339 73.475,26.482 C73.475,27.367 73.416,28.37 73.298,28.842 L52.351,28.842 C53.059,32.795 56.069,35.628 60.435,35.628 C63.267,35.628 65.687,34.389 67.339,32.678 L71.056,37.575 C68.932,40.053 64.919,42 60.14,42 C51.348,42 44.976,35.274 44.976,27.072 Z M52.469,24.299 L66.1,24.299 C65.274,20.286 62.737,18.221 59.373,18.221 C55.773,18.221 53.295,20.699 52.469,24.299 Z"/>
+      <polygon points="104.864 12.911 94.656 41.175 85.333 41.175 75.065 12.911 82.972 12.911 90.17 34.743 97.487 12.911"/>
+      <path d="M106.867 27.072C106.867 18.811 113.003 12.085 121.146 12.085 129.23 12.085 135.366 18.339 135.366 26.482 135.366 27.367 135.307 28.37 135.189 28.842L114.242 28.842C114.95 32.795 117.96 35.628 122.326 35.628 125.158 35.628 127.578 34.389 129.23 32.678L132.947 37.575C130.823 40.053 126.81 42 122.031 42 113.239 42 106.867 35.274 106.867 27.072zM114.36 24.299L127.991 24.299C127.165 20.286 124.628 18.221 121.264 18.221 117.665 18.221 115.187 20.699 114.36 24.299zM148.758 41.174L141.56 41.174 141.56 12.91 148.758 12.91 148.758 15.978C150.351 13.618 152.711 12.083 155.661 12.083 157.55 12.083 159.084 12.614 160.205 13.499L157.195 20.344C156.252 19.577 154.836 19.105 153.478 19.105 150.586 19.105 148.757 21.524 148.757 25.36L148.757 41.174 148.758 41.174zM191.415 18.87C186.694 18.87 183.508 22.47 183.508 27.013 183.508 31.556 186.753 35.215 191.356 35.215 194.248 35.215 196.548 34.212 198.319 32.442L201.977 37.753C199.735 40.232 195.664 42.002 191.179 42.002 182.8 42.002 176.31 35.275 176.31 27.073 176.31 18.812 182.8 12.086 191.061 12.086 195.9 12.086 199.735 13.738 202.213 16.335L198.082 21.468C196.312 19.755 194.188 18.87 191.415 18.87z"/>
+      <polygon points="207.402 .578 214.6 .578 214.6 41.174 207.402 41.174"/>
+      <path d="M221.148 27.072C221.148 18.811 227.639 12.085 235.84 12.085 244.042 12.085 250.592 18.812 250.592 27.072 250.592 35.274 244.042 42.001 235.84 42.001 227.64 42 221.148 35.274 221.148 27.072zM243.335 27.013C243.335 22.47 240.207 18.87 235.9 18.87 231.533 18.87 228.347 22.47 228.347 27.013 228.347 31.556 231.533 35.215 235.9 35.215 240.207 35.215 243.335 31.556 243.335 27.013zM263.924 28.193C263.924 32.323 266.343 35.097 269.943 35.097 273.542 35.097 275.962 32.324 275.962 28.193L275.962 12.911 283.16 12.911 283.16 28.724C283.16 36.631 277.909 41.882 269.943 41.882 261.977 41.882 256.725 36.631 256.725 28.724L256.725 12.911 263.924 12.911 263.924 28.193zM318.795.578L318.795 41.174 311.537 41.174 311.537 38.106C309.472 40.525 306.58 42.001 302.922 42.001 295.429 42.001 289.351 35.864 289.351 27.072 289.351 18.516 295.075 12.085 302.922 12.085 306.64 12.085 309.53 13.442 311.537 15.743L311.537.578 318.795.578zM311.537 27.013C311.537 22.47 308.409 18.87 304.102 18.87 299.735 18.87 296.549 22.47 296.549 27.013 296.549 31.556 299.735 35.215 304.102 35.215 308.409 35.215 311.537 31.556 311.537 27.013z"/>
+    </g>
+    <polygon fill="#AB2B4A" points="100.423 29.134 100.423 86.868 89.721 73.062 83.76 58.003 83.756 58.003 89.418 42.731"/><polygon fill="#E87A68" points=".429 29.134 .429 86.868 9.889 73.481 17.092 58.003 17.096 58.003 9.773 43.319"/><polygon fill="#D74D4E" points="83.756 58.003 52.241 60.003 17.092 58.003 31.76 29.134 50.426 .269 70.722 31.961"/><polygon fill="#BD3246" points="100.423 29.134 83.756 58.003 50.426 .269"/><polygon fill="#F19175" points="50.426 .269 17.092 58.003 .425 29.134"/><polygon fill="#CF3942" points="83.756 58.003 72.365 82.931 50.426 115.737 27.849 81.83 17.092 58.003"/><polygon fill="#E0625B" points="50.426 115.737 .425 86.868 17.092 58.003"/><polygon fill="#9A244F" points="50.422 115.737 100.423 86.868 83.756 58.003"/>
+  </g>
+</svg>
+        <p>European PaaS, fully managed. Push your code, the platform runs it.</p>
+        <div class="cc-trust"><span>ISO 27001</span><span>HDS</span><span>HOSTED IN FRANCE</span></div>
+      </div>
+      <div>
+        <h4>This demo</h4>
+        <ul>
+          <li><a href="https://www.clever.cloud/developers/doc/network/network-groups/" target="_blank" rel="noopener">Network Groups</a></li>
+          <li><a href="https://www.clever.cloud/developers/doc/develop/request-flow/" target="_blank" rel="noopener">Request Flow: block mode</a></li>
+          <li><a href="https://www.clever.cloud/developers/doc/manage/cli/network-groups/" target="_blank" rel="noopener">clever ng commands</a></li>
+        </ul>
+      </div>
+      <div class="academy">
+<svg class="academy__badge" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Badge Certification Clever Cloud">
+  <defs>
+    <linearGradient id="ccBadgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f57461"/><stop offset="0.5" stop-color="#cb1c42"/><stop offset="1" stop-color="#a51050"/>
+    </linearGradient>
+    <path id="ccBadgeRing" d="M110,110 m-84,0 a84,84 0 1,1 168,0 a84,84 0 1,1 -168,0"/>
+  </defs>
+  <circle cx="110" cy="110" r="107" fill="#0e1124" stroke="url(#ccBadgeGrad)" stroke-width="4"/>
+  <circle cx="110" cy="110" r="97" fill="none" stroke="rgba(222,221,238,0.2)" stroke-width="1" stroke-dasharray="2 5"/>
+  <circle cx="110" cy="110" r="66" fill="#1c2045" stroke="rgba(222,221,238,0.16)"/>
+  <text font-family="'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif" font-size="12.5" font-weight="700" letter-spacing="3" fill="#deddee" textLength="524" lengthAdjust="spacing">
+    <textPath href="#ccBadgeRing" textLength="524" lengthAdjust="spacing">CERTIFIED · CLEVER CLOUD · ACADEMY · CERTIFIED · CLEVER CLOUD · ACADEMY · </textPath>
+  </text>
+  <g transform="translate(110 103) scale(0.6) translate(-50.4 -58)">
+    <polygon fill="#AB2B4A" points="100.423 29.134 100.423 86.868 89.721 73.062 83.76 58.003 83.756 58.003 89.418 42.731"/><polygon fill="#E87A68" points=".429 29.134 .429 86.868 9.889 73.481 17.092 58.003 17.096 58.003 9.773 43.319"/><polygon fill="#D74D4E" points="83.756 58.003 52.241 60.003 17.092 58.003 31.76 29.134 50.426 .269 70.722 31.961"/><polygon fill="#BD3246" points="100.423 29.134 83.756 58.003 50.426 .269"/><polygon fill="#F19175" points="50.426 .269 17.092 58.003 .425 29.134"/><polygon fill="#CF3942" points="83.756 58.003 72.365 82.931 50.426 115.737 27.849 81.83 17.092 58.003"/><polygon fill="#E0625B" points="50.426 115.737 .425 86.868 17.092 58.003"/><polygon fill="#9A244F" points="50.422 115.737 100.423 86.868 83.756 58.003"/>
+  </g>
+  <circle cx="110" cy="158" r="10" fill="url(#ccBadgeGrad)"/>
+  <path d="M105 158l3.5 3.5 6.5-6.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        <div>
+          <h4>Clever Cloud Academy</h4>
+          <ul>
+            <li><a class="is-cert" href="https://academy.clever.cloud/" target="_blank" rel="noopener">Get certified ↗</a></li>
+            <li><a href="https://www.clever.cloud" target="_blank" rel="noopener">clever.cloud</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cc-footer__bottom"><span>Demo built by the Clever Cloud presales team</span><span>© 2026 Clever Cloud</span></div>
+  </div>
+</footer>
+
+<!-- Icons, drawn once and reused -->
+<svg class="sr-only" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-bar" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M2.5 17.5 5.5 10.5h13l3 7z"/><path d="m5.5 10.5 2-3.5h9l2 3.5"/><path d="M9 14h6"/></g>
+    <g id="i-gem" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M6 4h12l4 5-10 12L2 9z"/><path d="M2 9h20M9 4 7.5 9 12 21l4.5-12L15 4"/></g>
+    <g id="i-crown" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="m3 18 1-10 4.5 4L12 5l3.5 7L20 8l1 10z"/><path d="M3 21h18"/><circle cx="12" cy="15" r="1.2"/></g>
+    <g id="i-coin" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5.8"/><path d="M12 9v6M10 10.5h3a1.5 1.5 0 0 1 0 3h-3"/></g>
+    <g id="i-pearls" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="4" cy="6" r="1.6"/><circle cx="5.2" cy="10.4" r="1.7"/><circle cx="7.6" cy="14.3" r="1.8"/><circle cx="12" cy="16.6" r="2.1"/><circle cx="16.4" cy="14.3" r="1.8"/><circle cx="18.8" cy="10.4" r="1.7"/><circle cx="20" cy="6" r="1.6"/></g>
+    <g id="i-bond" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M5 3h11l3 3v15H5z"/><path d="M8 8h8M8 11h8M8 14h4"/><circle cx="15.5" cy="17" r="2"/></g>
+    <g id="i-ring" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><circle cx="12" cy="15" r="6"/><path d="m9 7 3-3.5L15 7l-3 2.5z"/></g>
+    <g id="i-chalice" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M7 3h10c0 5.5-2 8.5-5 9-3-.5-5-3.5-5-9z"/><path d="M12 12v6M8 21h8M9.5 18h5"/></g>
+    <g id="i-tiara" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 18c5-5 13-5 18 0"/><path d="m6 15.5 1-6 2.5 3.8L12 6l2.5 7.3L17 9.5l1 6"/><circle cx="12" cy="4" r="1.2"/></g>
+    <g id="i-egg" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4.5 0-7 6.5-7 11 0 4 3 7 7 7s7-3 7-7c0-4.5-2.5-11-7-11z"/><path d="M5.6 11.5h12.8M5.3 15h13.4"/><circle cx="12" cy="13.2" r=".9"/></g>
+    <g id="i-watch" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="13.5" r="7"/><path d="M12 3v3.5M10.3 3h3.4M12 13.5V9.6M12 13.5l2.8 1.8"/></g>
+    <g id="i-ingot" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3 15.5 4.5 9h15l1.5 6.5z"/><path d="M3 15.5V18h18v-2.5"/><path d="M8 12.3h8"/></g>
+    <g id="i-crowbar" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20 18.5 6.5"/><path d="M18.5 6.5c1-1 .8-2.8-.6-3.3-1-.4-2 .1-2.4 1"/><path d="m3.5 18.5 3 3"/></g>
+    <g id="i-tube" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="8" rx="4"/><rect x="8" y="10" width="7" height="4" rx="2" fill="currentColor" stroke="none"/></g>
+    <g id="i-safe" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="8" y="8" width="48" height="44" rx="5"/><circle cx="34" cy="30" r="11"/><path d="M34 19v4M34 37v4M23 30h4M41 30h4"/><path d="M14 52v5M50 52v5"/><path d="M14 22v16" stroke-linecap="round"/></g>
+  </defs>
+</svg>
+
+</body>
+</html>
