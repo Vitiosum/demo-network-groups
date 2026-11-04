@@ -21,13 +21,13 @@ A [Network Group](https://www.clever.cloud/developers/doc/network/network-groups
 | Address | `https://app-<vault>.cleverapps.io/treasure` | `http://<vault app id>.m.<ng id>.cc-ng.cloud:9000/treasure` |
 | Who answers | Clever's block service: `200`, body `OK`, 2 bytes, no vault seal | The vault app: `200`, JSON inventory, `X-Vault-Seal` header |
 | Port 9000 on the public host | `connection refused` | reachable, inside the group |
-| The private name on a public resolver (1.1.1.1) | `NXDOMAIN` | resolves to `10.102.0.x` inside the group |
+| The private name on a public resolver (1.1.1.1) | `NXDOMAIN` | resolves to the member's private address inside the group (a `10.…` subnet chosen per group) |
 | Measured from the lobby | about 10 to 15 ms, never the vault | DNS 0.5 ms, tunnel round trip about 2 ms, vault work about 0.2 ms |
 
 Two locks keep the vault private:
 
 1. **The public door is bricked up by the platform.** `CC_REQUEST_FLOW=block` puts a Clever service on the public port 8080 that answers `200 OK` to everything ([Request Flow doc](https://www.clever.cloud/developers/doc/develop/request-flow/#block-public-access)). The vault listens on `PORT=9000`, which only Network Group peers can reach. No domain was removed: the default domain stays, and it gets the block page.
-2. **The vault checks every caller.** It resolves its own member name, finds the local interface holding that IP (`wg-<end of the ng id> 10.102.0.x/16` on Clever), and refuses any caller outside that subnet with `403`. Its door ledger counts who got in.
+2. **The vault checks every caller.** It resolves its own member name, finds the local interface holding that IP (`wg-<end of the ng id>` on Clever, with a private `/16` address whose subnet changes from one group to another), and refuses any caller outside that subnet with `403`. Its door ledger counts who got in.
 
 What the vault answers is signed with an `X-Vault-Seal` header and a `Server-Timing` header. The lobby uses the first to tell the real vault from the block page, and the second to split the trip into DNS, tunnel and vault time.
 
