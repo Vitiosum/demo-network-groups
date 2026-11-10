@@ -53,6 +53,12 @@ function setBusy(value) {
 
 // ---------- rendering ----------
 function renderPlatform(platform) {
+  // "Live on Clever Cloud" only when the platform says so (APP_ID is injected by Clever Cloud).
+  const live = Boolean(platform.APP_ID);
+  $("livePill").classList.toggle("cc-pill--live", live);
+  $("livePill").classList.toggle("cc-pill--muted", !live);
+  $("livePill").firstElementChild.classList.toggle("cc-dot--muted", !live);
+  $("liveText").textContent = live ? "Live on Clever Cloud" : "Running locally";
   const labels = {
     CC_APP_NAME: "Application", APP_ID: "App ID", INSTANCE_NUMBER: "Instance", INSTANCE_TYPE: "Instance type",
     CC_PRETTY_INSTANCE_NAME: "Instance name", CC_COMMIT_ID: "Commit", CC_DEPLOYMENT_ID: "Deployment",

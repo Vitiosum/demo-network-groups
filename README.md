@@ -2,7 +2,7 @@
 
 > Two apps and a private tunnel. The **lobby** is a public Bun app. The **vault** is a second app whose public address is bricked up: Clever's Request Flow `block` mode answers its default domain, so no request from the internet ever reaches its code. The only way in is a **Network Group**, a WireGuard mesh between the two apps. Press "Try to break in" and the lobby's server attacks the vault's public address three ways, and fails three times. Press "Go through the tunnel" and the same server calls the vault at its private member name: the dial spins, the bolts retract, the door swings open on the crown jewels.
 
-![Both apps run locally (local mode, the lobby calls the vault over loopback): "Go through the tunnel" is pressed, the dial spins and the vault door opens on the gold, then closes](docs/tour.gif)
+![The demo live on Clever Cloud, both apps linked by a Network Group: "Go through the tunnel" is pressed, the lobby calls the vault over WireGuard in under 2 ms, the dial spins and the vault door opens on the gold, then closes](docs/tour.gif)
 
 ![The vault door open after a trip through the Network Group](docs/screenshot-desktop.png)
 
