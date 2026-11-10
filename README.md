@@ -2,6 +2,8 @@
 
 > Two apps and a private tunnel. The **lobby** is a public Bun app. The **vault** is a second app whose public address is bricked up: Clever's Request Flow `block` mode answers its default domain, so no request from the internet ever reaches its code. The only way in is a **Network Group**, a WireGuard mesh between the two apps. Press "Try to break in" and the lobby's server attacks the vault's public address three ways, and fails three times. Press "Go through the tunnel" and the same server calls the vault at its private member name: the dial spins, the bolts retract, the door swings open on the crown jewels.
 
+![Both apps run locally (local mode, the lobby calls the vault over loopback): "Go through the tunnel" is pressed, the dial spins and the vault door opens on the gold, then closes](docs/tour.gif)
+
 ![The vault door open after a trip through the Network Group](docs/screenshot-desktop.png)
 
 | On a phone | |
@@ -9,6 +11,8 @@
 | <img src="docs/screenshot-phone.png" alt="Phone layout" width="300"> | Every value on the page is live: the Network Group id, both members' private names and WireGuard addresses, the DNS / tunnel / vault timings of the last trip, the vault's own door ledger, and the guard's logbook of every request the lobby sent. |
 
 **Run it yourself.** The hosted demo was taken down after the presales review (November 2026). The steps in [Deploy on Clever Cloud](#deploy-on-clever-cloud) recreate it from scratch, both apps and the Network Group, in about 15 minutes.
+
+**Before you start.** Network Groups must be enabled once for your clever-tools user, or every `clever ng` command is refused: `clever features enable ng`.
 
 **Get certified.** This demo runs on Clever Cloud. To deploy your own apps the same way, get certified at the [Clever Cloud Academy](https://academy.clever.cloud/).
 
@@ -41,9 +45,12 @@ Three resources, all from this one repository:
 - **the vault** `demo-network-groups-vault` (alias `vault`), whose public port is blocked, started by `CC_RUN_COMMAND`;
 - **the Network Group** `demo-network-groups`, with both apps as members. That is the only link between them: the lobby reaches the vault at its member name, `VAULT_URL`, on port 9000.
 
-You need [clever-tools](https://www.clever.cloud/developers/doc/cli/) (`clever login` done; on older versions also `clever features enable ng`), `jq`, and the ID of the organisation that will own the resources (`orga_…`, shown in the Console). Run the commands from the repo root: both `clever create` calls link the same folder, one alias each.
+You need [clever-tools](https://www.clever.cloud/developers/doc/cli/) (`clever login` done, and `clever features enable ng` run once: see step 0), `jq`, and the ID of the organisation that will own the resources (`orga_…`, shown in the Console). Run the commands from the repo root: both `clever create` calls link the same folder, one alias each.
 
 ```bash
+# 0. Once per user: enable the Network Groups commands of clever-tools
+clever features enable ng
+
 # 1. The two apps and their size
 clever create --type node demo-network-groups --alias lobby --org <org_id> --region par
 clever create --type node demo-network-groups-vault --alias vault --org <org_id> --region par
